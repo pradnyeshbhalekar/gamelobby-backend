@@ -1,0 +1,53 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+
+# Build output
+dist/
+build/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# MongoDB dump files
+dump/
+
+# AWS credentials if accidentally copied
+.aws/
+
+# Optional: skip docker stuff
+docker-compose.override.yml
+Dockerfile*
+
+# Optional: skip test output
+*.test.js.snap
+jest-output/
+
+# Optional: skip lockfiles (choose one if needed)
+package-lock.json
+# yarn.lock
