@@ -83,21 +83,26 @@ exports.registerParlour = async(req,res)=>{
     }
 }
 
-exports.loginParlour = async(req,res) =>{
-    const {email,password} = req.body
-    try{
-        const parlour = await Parlour.findOne({email});
-        if(parlour &&(await parlour.matchPassword(password))){
-            res.status(200).json({
-                msg:"Logged in Successfully",
-                _id:parlour._id,
-                name:parlour.name,
-                email:parlour.email,
-                token:generateToken(parlour._id)
-            })
-        }
-    }catch(err){
-        console.log('Error occured',err)
-        return res.status(500).json({msg:"Registration failed",error:err.message})
+exports.loginParlour = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const parlour = await Parlour.findOne({ email });
+
+    if (parlour && (await parlour.matchPassword(password))) {
+      return res.status(200).json({
+        msg: "Logged in Successfully",
+        _id: parlour._id,
+        name: parlour.name,
+        email: parlour.email,
+        token: generateToken(parlour._id)
+      });
     }
-}
+
+
+    return res.status(401).json({ msg: "Invalid email or password" });
+
+  } catch (err) {
+    console.log("Error occured", err);
+    return res.status(500).json({ msg: "Login failed", error: err.message });
+  }
+};

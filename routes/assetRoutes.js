@@ -1,10 +1,18 @@
 const express = require('express')
-const {addAsset,addGamesToAssets,getParlourAsset}  = require('../controllers/parlourAssetsController')
+const {addAsset,getParlourAsset,searchGame,addGameToAsset,editParlourAsset,getAssetById}  = require('../controllers/parlourAssetsController')
 const {protectParlour} = require('../middlewares/authMiddleware')
 const router = express.Router()
 
-router.post('/add/asset',protectParlour,addAsset)
-router.post('/add/game/:assetId',protectParlour,addGamesToAssets)
+router.post('/asset',protectParlour,addAsset)
+
 router.get('/assets/:parlourId',protectParlour,getParlourAsset)
 
-module.exports = router;
+router.post('/asset/:assetId/game', protectParlour, addGameToAsset);
+
+router.put('/asset/:assetId',protectParlour,editParlourAsset)
+
+router.get('/asset/:assetId',protectParlour,getAssetById)
+
+module.exports = router;  
+
+

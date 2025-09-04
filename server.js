@@ -8,6 +8,7 @@ const authRoutes = require('./routes/authRoutes')
 const AssetRoutes = require('./routes/assetRoutes')
 const ParlourRoutes = require('./routes/parlourRoutes')
 const BookingRoutes = require('./routes/bookingRoutes')
+const gamesRoutes = require('./routes/gamesRoutes')
 
 const connectDB = require("./config/db");
 
@@ -38,6 +39,7 @@ app.use("/api/auth",authRoutes)
 app.use('/api/parlour',AssetRoutes)
 app.use('/api/parlour',ParlourRoutes)
 app.use('/api/user',BookingRoutes)
+app.use('/api/game',gamesRoutes)
 
 
 app.listen(process.env.PORT, () =>

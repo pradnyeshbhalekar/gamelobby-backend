@@ -49,6 +49,10 @@ const parlourSchema = new mongoose.Schema(
         ref: "Asset",
       },
     ],
+    isOpen : {type: Boolean},
+    allowPreBooking:{type: Boolean},
+    preBookingDate:{type:Date},
+
     qrcode: {
       type: String,
     },
@@ -71,3 +75,5 @@ parlourSchema.methods.matchPassword = async function (enteredPassword) {
 
 const Parlour = mongoose.model("Parlour",parlourSchema)
 module.exports = Parlour
+
+
